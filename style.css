@@ -838,6 +838,12 @@ img { max-width: 100%; display: block; }
   text-align: justify;
   hyphens: auto;
 }
+.footer-dev-note {
+  margin: 20px auto 0;
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+  font-style: italic;
+}
 .footer-bottom {
   max-width: var(--content-max);
   margin: 20px auto 0;
