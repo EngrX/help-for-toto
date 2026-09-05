@@ -845,7 +845,7 @@ img { max-width: 100%; display: block; }
   padding-top: 20px;
 }
 .footer-dev-note {
-  margin: 0 0 16px;
+  margin: 16px 0 0;
   font-size: 0.78rem;
   color: var(--ink-soft);
   font-style: italic;
