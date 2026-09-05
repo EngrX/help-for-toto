@@ -445,14 +445,12 @@ img { max-width: 100%; display: block; }
   color: var(--ink-soft);
 }
 .verify-value {
+  display: block;
   font-weight: 600;
-  font-size: 0.98rem;
-}
-.verify-field:first-child .verify-value {
+  font-size: 0.9rem;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  font-size: 0.9rem;
 }
 .verify-value.mono { font-family: var(--font-mono); font-weight: 500; }
 
