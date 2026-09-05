@@ -1,55 +1,29 @@
 # Toto — Donation Drive Site
 
-A static, single-page fundraising site. No build step, no server — open
-`index.html` in a browser, or upload the folder as-is to any static host.
-This copy is already live at **github.com/EngrX/help-for-toto**, deployed via
-GitHub Pages.
+On August 15, 2026, Jose Illustre Aguinaldo — Toto to his family — suffered a
+sudden stroke. What followed was a public hospital with no neurologist or
+neurosurgeon on-site, an emergency transfer to St. Luke's Medical Center –
+Global City, hydrocephalus, an emergency operation, pneumonia, a
+tracheostomy, and weeks in the Neuro Critical Care Unit. He's still there.
+The hospital bill has already passed ₱2,400,000, not including doctors'
+professional fees, and it keeps growing by roughly ₱110,000 a day.
 
-## Status: filled in and pushed — two things left
+This site exists because asking everyone we know, one message at a time,
+wasn't reaching far enough. It's a single page that lays out what actually
+happened, lets anyone verify it directly with the hospital, shows the real
+costs, and makes it as easy as possible to send whatever help someone can —
+a bank transfer, GCash, Maya, buying something from a small Etsy shop, or
+just a prayer, which we mean just as sincerely as the rest.
 
-Everything below used to be a checklist of `[bracketed]` placeholders; almost
-all of them are done. Search `index.html` for `[` and you'll only find two
-left:
+It was built and is maintained by family, at no cost, for exactly one
+reason: to reach more people who might be able to help.
 
-1. **The page's own URL**, in the "Verify before you send" note in the
-   `#help` section. Once GitHub Pages gives you the live link (Settings →
-   Pages → check the URL at the top), paste it in over
-   `[this page's real web address]` in both the HTML comment and the text
-   right below it.
-2. **The Etsy shop link** — search for `href="#"` next to "Visit my Etsy
-   shop" and replace it with the real shop URL. There's a `<!-- TODO -->`
-   comment marking the spot.
+**Live at:** github.com/EngrX/help-for-toto (via GitHub Pages)
 
-Everything else — bank/GCash/Maya account details and QR codes, the hospital
-verification card and map, the patient photo, the three document PDFs, the
-story and family quote, the medical updates timeline, and the contact/footer
-info — already has real content in it.
+## If you're helping maintain this site
 
-## Keeping it up to date
-
-This is the stuff that will actually need touching as the situation changes:
-
-- **Amount raised** — `.goal-bar-labels` in the `#help` section, and
-  `.goal-bar-fill`'s inline `width` (roughly `raised ÷ current bill`, as a
-  percentage).
-- **Current bill / daily increase** — same goal bar, plus the September 4
-  entry in the timeline and the Story section repeat this figure; keep them
-  in sync when the bill is updated.
-- **Guarantee letters** — the `.goal-bar-note` right under the goal bar, if
-  new ones come in or amounts change.
-- **Medical updates timeline** (`#updates`) — add a new `<li
-  class="timeline-item">` for each update, following the existing entries'
-  format (a `<span class="timeline-date">` plus a short `<p>`).
-- **"Last updated" date** — appears in the hero status pill and the footer
-  (`.footer-meta`); update both together so they don't fall out of sync.
-- **Supporting documents** (`#updates` → Supporting documents) — if you get
-  a newer medical abstract, certificate, or statement of account, just
-  overwrite the existing PDF at the same filename in `assets/` and the
-  "View / download" links keep working with no other changes.
-
-## Publishing changes
-
-The site is a normal git repo pushed to GitHub Pages, so any edit just needs:
+The short version: it's a plain HTML/CSS/JS page, no build step. Edit
+`index.html` / `style.css` directly, then:
 
 ```bash
 git add -A
@@ -57,20 +31,16 @@ git commit -m "describe what changed"
 git push
 ```
 
-GitHub Pages rebuilds automatically within a minute or two of a push to
-`main` — no separate deploy step.
+GitHub Pages picks up the change automatically within a minute or two.
 
-## Notes
+Things that will need updating as the situation changes: the amount raised
+and current bill (`#help` section), the medical updates timeline
+(`#updates`), the "last updated" date (hero + footer), and the supporting
+documents in `assets/` if newer ones come in. Two placeholders are still
+open — search `index.html` for `[` to find them (this page's own URL in the
+anti-scam note, and the Etsy shop link).
 
-- The map uses a public Google Maps embed URL — no API key required.
-- Fonts (Source Serif 4, Inter, IBM Plex Mono) load from Google Fonts, so the
-  page needs internet access to render with the intended typefaces; it
-  still degrades to system fonts if that request fails.
-- Two background illustrations are blended into the page via
-  `mix-blend-mode: multiply` so their white backgrounds disappear:
-  `assets/hand-sil.avif` (praying hands, used as the hero watermark and the
-  small icon above the family quote) and `assets/hand.jpg` (hands forming a
-  heart, used as the watermark in the "How to Help" section). AVIF is
-  supported by all current major browsers; convert to PNG with a transparent
-  background instead if you need to support very old ones.
-- Everything is plain HTML/CSS/JS — no dependencies, no build tools.
+## Questions or want to help build something similar?
+
+Reach the family at the contact details on the page itself, or the
+developer who built this at delarosajohnd@gmail.com.
