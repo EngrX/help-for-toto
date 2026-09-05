@@ -838,22 +838,24 @@ img { max-width: 100%; display: block; }
   text-align: justify;
   hyphens: auto;
 }
-.footer-dev-note {
+.footer-bottom {
+  max-width: var(--content-max);
   margin: 20px auto 0;
+  border-top: 1px solid var(--line-soft);
+  padding-top: 20px;
+}
+.footer-dev-note {
+  margin: 0 0 16px;
   font-size: 0.78rem;
   color: var(--ink-soft);
   font-style: italic;
 }
-.footer-bottom {
-  max-width: var(--content-max);
-  margin: 20px auto 0;
+.footer-bottom-row {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
   flex-wrap: wrap;
   gap: 6px 24px;
-  border-top: 1px solid var(--line-soft);
-  padding-top: 20px;
 }
 .footer-meta {
   font-size: 0.8rem;
