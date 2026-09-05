@@ -1,81 +1,76 @@
 # Toto — Donation Drive Site
 
 A static, single-page fundraising site. No build step, no server — open
-`index.html` in a browser, or upload the folder as-is to any static host
-(Netlify, Vercel, GitHub Pages, Cloudflare Pages, or a plain web host).
+`index.html` in a browser, or upload the folder as-is to any static host.
+This copy is already live at **github.com/EngrX/help-for-toto**, deployed via
+GitHub Pages.
 
-## Before you publish, replace every `[bracketed]` placeholder
+## Status: filled in and pushed — two things left
 
-Open `index.html` and search for `[` — every bracket is a spot that needs
-real information. In order of importance:
+Everything below used to be a checklist of `[bracketed]` placeholders; almost
+all of them are done. Search `index.html` for `[` and you'll only find two
+left:
 
-### 1. Money — done, one step left
-- **Account details** (Bank/BPI, GCash, Maya) are filled in with the real
-  account names and numbers.
-- **QR codes**: the page already points at `assets/bank.jpg`, `assets/gcash.jpg`,
-  and `assets/maya.jpg` — just drop the exported QR images into `assets/`
-  with those exact filenames and they'll appear automatically, nothing else
-  to change. Export each one from the source app so it actually works for
-  payment:
-  - GCash: app → **Receive Money** → save the QR image as `gcash.jpg`.
-  - Maya: app → **Receive Money** / **My QR** → save the QR image as `maya.jpg`.
-  - Bank: many Philippine banks support InstaPay QR Ph in-app; save that as
-    `bank.jpg`, or if yours doesn't, a plain text/logo image is fine since
-    the account details above already cover manual transfers.
-- **Goal bar** (`#help` section): update `.goal-bar-fill`'s `width` and the
-  raised-amount label periodically as donations come in.
+1. **The page's own URL**, in the "Verify before you send" note in the
+   `#help` section. Once GitHub Pages gives you the live link (Settings →
+   Pages → check the URL at the top), paste it in over
+   `[this page's real web address]` in both the HTML comment and the text
+   right below it.
+2. **The Etsy shop link** — search for `href="#"` next to "Visit my Etsy
+   shop" and replace it with the real shop URL. There's a `<!-- TODO -->`
+   comment marking the spot.
 
-### 2. Hospital / verification (`#verification` section)
-- Hospital name, ward/room, case or admission reference number, attending
-  physician.
-- The embedded map: replace the placeholder text in both the `iframe src`
-  and the "Open in Google Maps" link with the hospital's exact name and
-  address (URL-encode spaces as `+` or `%20`).
+Everything else — bank/GCash/Maya account details and QR codes, the hospital
+verification card and map, the patient photo, the three document PDFs, the
+story and family quote, the medical updates timeline, and the contact/footer
+info — already has real content in it.
 
-### 3. Patient story (`#story-top` and `#story` sections)
-- Full legal name, age, diagnosis, admission date, hospital name.
-- Rewrite the two placeholder paragraphs in your own words — specific,
-  honest details build more trust than generic appeals.
-- Swap the family quote for a real one, or delete the `<blockquote>` block.
+## Keeping it up to date
 
-### 4. Photo and documents
-- Hero photo is done — `assets/patient.jpg`. To swap it for a different photo
-  later, just replace that file (same name) or update the `<img class="id-photo">`
-  `src` in `index.html`. The crop is controlled by `object-position` on
-  `.id-photo` in `style.css` if a new photo needs reframing.
-- The three document cards (`#updates` section) link to PDFs, not images —
-  `assets/medical-abstract.pdf`, `assets/medical-certificate.pdf`, and
-  `assets/statement-of-account.pdf`. Add real PDFs with those exact filenames
-  and the "View / download" links start working automatically; nothing else
-  to change. **Redact anything sensitive** — other patients' names, insurance
-  numbers, full addresses — before adding files here.
-  - If you only have photos of the documents (not scans), most phones can
-    save a photo as a PDF directly — iPhone Notes app → scan → share as PDF,
-    or Google Drive's scan feature on Android — rather than uploading raw
-    JPGs, which don't preview or print as cleanly.
+This is the stuff that will actually need touching as the situation changes:
 
-### 5. Updates timeline (`#updates`)
-- Fill in the three dated entries with real updates; add more `<li
-  class="timeline-item">` entries as treatment continues.
+- **Amount raised** — `.goal-bar-labels` in the `#help` section, and
+  `.goal-bar-fill`'s inline `width` (roughly `raised ÷ current bill`, as a
+  percentage).
+- **Current bill / daily increase** — same goal bar, plus the September 4
+  entry in the timeline and the Story section repeat this figure; keep them
+  in sync when the bill is updated.
+- **Guarantee letters** — the `.goal-bar-note` right under the goal bar, if
+  new ones come in or amounts change.
+- **Medical updates timeline** (`#updates`) — add a new `<li
+  class="timeline-item">` for each update, following the existing entries'
+  format (a `<span class="timeline-date">` plus a short `<p>`).
+- **"Last updated" date** — appears in the hero status pill and the footer
+  (`.footer-meta`); update both together so they don't fall out of sync.
+- **Supporting documents** (`#updates` → Supporting documents) — if you get
+  a newer medical abstract, certificate, or statement of account, just
+  overwrite the existing PDF at the same filename in `assets/` and the
+  "View / download" links keep working with no other changes.
 
-### 6. Contact / footer (`#contact`)
-- Family coordinator's name, phone number, email.
-- The disclaimer paragraph is there deliberately — it's honest and it
-  builds trust with people who don't know the family personally. Keep it,
-  just adjust the wording if needed.
+## Publishing changes
+
+The site is a normal git repo pushed to GitHub Pages, so any edit just needs:
+
+```bash
+git add -A
+git commit -m "describe what changed"
+git push
+```
+
+GitHub Pages rebuilds automatically within a minute or two of a push to
+`main` — no separate deploy step.
 
 ## Notes
 
-- QR codes are generated on the fly via `api.qrserver.com` for the sample
-  placeholders only — once you swap in real QR images from your banking/
-  e-wallet apps, the page no longer depends on that service.
 - The map uses a public Google Maps embed URL — no API key required.
 - Fonts (Source Serif 4, Inter, IBM Plex Mono) load from Google Fonts, so the
   page needs internet access to render with the intended typefaces; it
   still degrades to system fonts if that request fails.
-- The hero background watermark is `assets/hand-sil.avif` — a black-ink
-  illustration blended into the page via `mix-blend-mode: multiply` so its
-  white background disappears. AVIF is supported by all current major
-  browsers; if you need to support very old browsers, convert it to PNG
-  with a transparent background instead and drop the blend-mode rule.
+- Two background illustrations are blended into the page via
+  `mix-blend-mode: multiply` so their white backgrounds disappear:
+  `assets/hand-sil.avif` (praying hands, used as the hero watermark and the
+  small icon above the family quote) and `assets/hand.jpg` (hands forming a
+  heart, used as the watermark in the "How to Help" section). AVIF is
+  supported by all current major browsers; convert to PNG with a transparent
+  background instead if you need to support very old ones.
 - Everything is plain HTML/CSS/JS — no dependencies, no build tools.
