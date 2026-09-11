@@ -844,13 +844,6 @@ img { max-width: 100%; display: block; }
   border-top: 1px solid var(--line-soft);
   padding-top: 20px;
 }
-.footer-dev-note {
-  margin: 16px 0 0;
-  font-size: 0.78rem;
-  color: var(--ink-soft);
-  font-style: italic;
-  text-align: center;
-}
 .footer-bottom-row {
   display: flex;
   justify-content: space-between;
