@@ -849,6 +849,7 @@ img { max-width: 100%; display: block; }
   font-size: 0.78rem;
   color: var(--ink-soft);
   font-style: italic;
+  text-align: center;
 }
 .footer-bottom-row {
   display: flex;
